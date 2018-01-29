@@ -1,46 +1,44 @@
 # MATH AND FORMATTING (34PTS TOTAL)
 
-#FORMATTING
+#  FORMATTING
 
-#PROBLEM 1 (2pts)
-#Use {}.format() to print 0.000321192 in scientific notation to two decimals
+#  PROBLEM 1 (2pts)
+#  Use {}.format() to print 0.000321192 in scientific notation to two decimals
+print("{:.2E}".format(0.000321192))
 
+#  PROBLEM 2 (2pts)
+#  You get 8 out of 9 on a quiz.
+#  Print 8/9 using {}.format() so that it appears as 88.9%
+print("{:.3}%".format((8/9) * 100))
 
-
-#PROBLEM 2 (2pts)
-#You get 8 out of 9 on a quiz.
-#Print 8/9 using {}.format() so that it appears as 88.9%
-
-
-
-#PROBLEM 3 (3pts)
-#Take the following program:
+#  PROBLEM 3 (3pts)
+#  Take the following program:
 
 score = 41237
 highscore = 1023407
-print("Score:      " + str(score) )
-print("High score: " + str(highscore) )
+print("Score:      " + str(score))
+print("High score: " + str(highscore))
 
-#Which right now outputs:
-#Score:      41237
-#High score: 1023407
+#  Which right now outputs:
+#  Score:      41237
+#  High score: 1023407
 
-#Use print formatting so that the output instead looks like:
-#Score:          41,237
-#High score:  1,023,407
-#Make sure the print formatting works for any integer from zero to nine million. Do not use any plus sign (+) in your code. 
-#You should only have two double quotes in each print statement.
+#  Use print formatting so that the output instead looks like:
+#  Score:          41,237
+#  High score:  1,023,407
+#  Make sure the print formatting works for any integer from zero to nine million. Do not use any plus sign (+) in your code.
+#  You should only have two double quotes in each print statement.
+print("Score: {:>20,}".format(score))
+print("High score: {:>15,}".format(highscore))
 
-
-
-#PROBLEM 4 (5 pts) 
-#Create a program that loops from 1 to 20 and lists the decimal equivalent of their inverse. 
-#Use print formatting to exactly match the following output:
-#1/1  = 1.0
-#1/2  = 0.5
-#1/3  = 0.333
-#1/4  = 0.25
-#1/5  = 0.2
+#  PROBLEM 4 (5 pts)
+#  Create a program that loops from 1 to 20 and lists the decimal equivalent of their inverse.
+#  Use print formatting to exactly match the following output:
+#  1/1  = 1.0
+#  1/2  = 0.5
+#  1/3  = 0.333
+#  1/4  = 0.25
+#  1/5  = 0.2
 #1/6  = 0.167
 #1/7  = 0.143
 #1/8  = 0.125
@@ -56,22 +54,17 @@ print("High score: " + str(highscore) )
 #1/18 = 0.0556
 #1/19 = 0.0526
 #1/20 = 0.05
+for i in range(1, 21):
+  print("{:.4}".format(1 / i))
 
-
-for i in range(1, 20):
-  print(i) # in case you forgot how to use a loop, here's a start
-
-
-
-
-#PROBLEM 5 (From Math Class to Code - 5pts)
+# PROBLEM 5 (From Math Class to Code - 5pts)
 # Print the answer to the math question:
 # 3(60x^2 + 3x/9) + 2x - 4/3(x) - sqrt(x)
 # where x = 12.83
 
-
 x = 12.83
 your_answer = 0  # Substitute your equation for the zero
+your_answer = 3*(60*x**2) + (3 * x) / 9 + (2 * x) - 4 / (3 * x) - x**-2
 print(your_answer)
 
 
@@ -79,8 +72,9 @@ print(your_answer)
 #The cover price of a book is $27.95, but bookstores get a 50 percent discount.
 #Shipping costs $4 for the first copy and 75 cents for each additional copy.
 # Calculate the total wholesale costs for 68 copies formatted (using {}.format()) to the nearest penny.
-
-
+book_price = 27.95
+total_cost = ((((book_price / 2) + .75) * 68) + 4)
+print("{:.2f}".format(total_cost))
 
 
 #PROBLEM 3 (What is this, the ACT? - 5pts)
@@ -93,7 +87,8 @@ chair_price = 189.99
 tax_percent = 0.095
 units = 8
 
-
+total_cost2 = (chair_price * units)  + ((chair_price * units) * tax_percent)
+print(round(total_cost2, 2))
 
 
 ##PROBLEM 4 (Variable Swap Logic Problem- 2pts)
@@ -109,9 +104,10 @@ b = 23
 print( "a =", a, "and b =", b)
 a += b # this is the first line to help you out
 # add two more lines of code here to cause swapping of a and b
+b -= a
+b *= -1
+a -= b
 print( "a =", a, "and b =", b)
-
-
 
 
 #####PROBLEM 5 (Coin counter - 5pts)
@@ -123,4 +119,36 @@ print( "a =", a, "and b =", b)
 # then the maximum number of dimes that fit in the remainder after you subtract the dollars and quarters,
 # and so on for nickels and pennies.
 # The result is that you express the amount as the minimum number of coins needed.
+x = 1
+y = .25
+z = .1
+w = .05
+k = .01
+dollars = 0
+quarters = 0
+dimes = 0
+nickels = 0
+pennies = 0
+count = 234.9
+for x in range(int(count)):
+  dollars += 1
+  count -= 1
+for y in range(int(count)):
+  quarters += 1
+  count -= .25
+for z in range(int(count)):
+  dimes += 1
+  count -= .1
+for w in range(int(count)):
+  nickels += 1
+  count -= .05
+for k in range(int(count)):
+  pennies += 1
+  count -= .01
+print("Total Amount = ", count)
+print("Dollars used = ", dollars)
+print("Quarters used = ", quarters)
+print("Dimes used = ", dimes)
+print("Nickels used = ", nickels)
+print("Pennies used = ", pennies)
 
