@@ -119,32 +119,30 @@ print( "a =", a, "and b =", b)
 # then the maximum number of dimes that fit in the remainder after you subtract the dollars and quarters,
 # and so on for nickels and pennies.
 # The result is that you express the amount as the minimum number of coins needed.
-x = 1
-y = .25
-z = .1
-w = .05
-k = .01
+x = 100
+y = 25
+z = 10
+w = 5
+k = 1
 dollars = 0
 quarters = 0
 dimes = 0
 nickels = 0
 pennies = 0
-count = 234.9
-for x in range(int(count)):
-  dollars += 1
-  count -= 1
-for y in range(int(count)):
-  quarters += 1
-  count -= .25
-for z in range(int(count)):
-  dimes += 1
-  count -= .1
-for w in range(int(count)):
-  nickels += 1
-  count -= .05
-for k in range(int(count)):
-  pennies += 1
-  count -= .01
+count = 8.37
+count *= 100
+count1 = count % x
+dollars = (count - count1) / 100
+print(count1)
+count2 = count1 % y
+quarters = (count1 - count2) / 25
+count3 = count2 % z
+dimes = (count2 - count3) / 10
+count4 = count3 % w
+nickels = (count3 - count4) / 5
+count5 = count4 % k
+pennies = (count4 - count5)
+count /= 100
 print("Total Amount = ", count)
 print("Dollars used = ", dollars)
 print("Quarters used = ", quarters)
