@@ -55,3 +55,4 @@ C = 1
 D = 1
 num_list = [A, B, C, D]
 new_num_list = [D, C, B, A]
+for i in range(1, 10):
