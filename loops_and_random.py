@@ -49,10 +49,14 @@ print("Probability of Success =", round((prob_success * 100), 3), "%")
 # What are the digits?
 # Note: to make ABCD and DCBA conventional numbers, neither A nor D can be zero.
 # Use a quadruple-nested loop to solve.
-A = 1
-B = 1
-C = 1
-D = 1
-num_list = [A, B, C, D]
-new_num_list = [D, C, B, A]
-for i in range(1, 10):
+for a in range(1, 10):
+    for b in range(10):
+        for c in range(10):
+            for d in range(1, 10):
+                num = int(str(a) + str(b) + str(c) + str(d))
+                #  print(num)
+                new_num = int(str(d) + str(c) + str(b) + str(a))
+                if new_num == (4 * num):
+                    print(num)
+                    print(new_num)
+
