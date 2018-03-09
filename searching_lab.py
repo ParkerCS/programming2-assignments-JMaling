@@ -13,7 +13,7 @@ for line in file:
         dict_list.append(word)
 # print(dict_list)
 file.close()
-'''
+
 print("--- Linear Search ---")
 file = open("search_files/AliceInWonderLand200.txt")
 line_number = 0
@@ -29,7 +29,7 @@ for line in file:
         if i >= len(dict_list) - 1:
             print("Line ", line_number, "Possible Misspelled Word: ", word)
 file.close()
-'''
+
 print("--- Binary Search ---")
 file = open("search_files/AliceInWonderLand.txt")
 line_number = 0
