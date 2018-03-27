@@ -88,6 +88,8 @@ plt.plot(year_numbers, paratransit_list, label="Paratransit Travel")
 plt.plot(year_numbers, rail_list, label="Railway Travel")
 plt.plot(year_numbers, totals_list, label="Travel Totals")
 plt.ylabel("Number of Uses (in Hundreds of Millions)")
+plt.xlabel("Years")
+plt.title("Chicago Public Transportation Usage")
 plt.xticks(year_numbers, year_list, rotation=90)
 plt.legend(bbox_to_anchor=(.95, .3), loc="upper right")
 
