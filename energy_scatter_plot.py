@@ -1,3 +1,7 @@
+import matplotlib.pyplot as plt
+import csv
+import numpy as np
+
 '''
 Energy Efficiency of Chicago Schools (35pts)
 
@@ -19,11 +23,67 @@ Make a scatterplot which does the following:
 - Label Francis W. Parker. (3pts)
 - Create a best fit line for schools shown. (5pts)
 - Customize your graph in a discernable way using any technique discussed or one from the API (matplotlib.org). (5pts)
+'''
+plt.figure("Energy Efficiency of Schools", tight_layout=True, figsize=(11, 7.2), facecolor="lightgreen")
 
+with open("files/Chicago_Energy_Benchmarking_-_2016_Data_Reported_in_2017.csv") as f:
+    reader = csv.reader(f)
+    data = list(reader)
 
+school_data = []
+for i in range(len(data)):
+    if data[i][6] == "K-12 School":
+        school_data.append(data[i])
+headers = school_data.pop(0)
+school_data = [x for x in school_data if x[21] != '']
+new_data = []
+
+for school in school_data:
+    try:
+        float(school[21])
+        new_data.append(school)
+    except:
+        # print(school[21])
+        pass
+
+school_data = new_data[:]
+school_data.sort(key=lambda x: float(x[21]))
+print(school_data)
+
+ghg_data = []
+sqrft_data = []
+ghg_intesity_data = []
+for i in range(len(school_data)):
+    try:
+        emissions = (float(school_data[i][20]))
+        ghg_data.append(emissions)
+        sqr_footage = (float(school_data[i][7]))
+        sqrft_data.append(sqr_footage)
+        ghg_intensity = (float(school_data[i][21]))
+        ghg_intesity_data.append(ghg_intensity)
+    except:
+        print(data[i][2], "has no data")
+
+plt.scatter(sqrft_data, ghg_data, s=2, color="lightgreen")
+plt.xlabel("Square Footage")
+plt.ylabel("Greenhouse Gas Emissions (In Tons C02)")
+plt.title("Greenhouse Gas Efficiency in Chicago Schools")
+
+for i in range(len(school_data)):
+    if i < 5 or i > (len(school_data) - 6) or school_data[i][2] == "Francis W Parker School":
+        plt.annotate(school_data[i][2] + ": GHG Intensity = " + school_data[i][21], xy=(sqrft_data[i], ghg_data[i]))  # text, xy = (x, y)
+        print(school_data[i][2])
+
+m, b = np.polyfit(sqrft_data, ghg_data, 1)
+x = [0, 1600000]
+y = [m * point + b for point in x]
+plt.plot(x, y, color="green")
+
+plt.show()
+
+'''
 Challenge (for fun):
 - Make schools in top 10 percent of GHG Intensity show in green.
 - Make schools in bottom 10 percent GHG Intesity show in red.
 - Add colleges and universities (use a different marker type)
-
 '''
