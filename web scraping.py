@@ -59,7 +59,7 @@ for i in range(len(day_list)):
     if weather_list[i] == "Rain" or weather_list[i] == "AM Showers" or weather_list[i] == "Light Rain/Wind" or weather_list[    i] == "Rain/Snow Showers" or weather_list[i] == "PM Showers" or weather_list[i] == "Showers":
         print(day_list[i] + ",", date_list[i], "will have", weather_list[i], "with winds traveling",
               winds_list[i].strip() + ".", "Temperatures could reach highs and lows of", temps_list[i],
-              "respectively, with percent humidity reaching a potential high of", humids_list[i],
+              ", with percent humidity reaching a potential high of", humids_list[i],
               "and percent precipitation reaching a potential high of", precips_list[i], "\n")
     else:
-        print(day_list[i] + ",", date_list[i], "will be", weather_list[i], "with winds traveling", winds_list[i].strip() +          ".", "Temperatures could reach highs and lows of", temps_list[i], "respectively, with percent humidity reaching a           potential high of", humids_list[i], "and percent precipitation reaching a potential high of", precips_list[i], "\n")
+        print(day_list[i] + ",", date_list[i], "will be", weather_list[i], "with winds traveling", winds_list[i].strip() +          ".", "Temperatures could reach highs and lows of", temps_list[i], ", with percent humidity reaching a           potential high of", humids_list[i], "and percent precipitation reaching a potential high of", precips_list[i], "\n")
